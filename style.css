@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+/*Reseteo de margenes y espaciados*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Configuracion imagen de fondo*/
+body {
+  min-height: 100vh;
+  background: url("background.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Configuracion posicion de header*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.3rem 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+/* Configuracion de fondo del header*/
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(50px);
+  z-index: -1;
+}
+
+/* Configuracion animacion al pasar curso en header*/
+
+.header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+header:hover::after {
+  left: 100%;
+}
+
+/* Configuracion de logo*/
+.logo {
+  font-size: 2rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* Configuracion de enlaces del navbar*/
+.navbar a {
+  font-size: 1.15rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 2.5rem;
+}
+
+/* Detector de click en el navbar*/
+#check {
+  display: none;
+}
+
+/* configuracion en el icono del navbar*/
+.icons {
+  position: absolute;
+  right: 5%;
+  font-size: 2.8rem;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+/* Empiezan Breackpoints*/
+@media (max-width: 900px) {
+  .header {
+    padding: 1.3rem 5%;
+  }
+}
+
+/* Visualizacion del navbar en mobile*/
+@media (max-width: 768px) {
+  .icons {
+    display: inline-flex;
+  }
+
+  /* Ocultado del close al abrir el navbar */
+  #check:checked ~ .icons #menu-icon {
+    display: none;
+  }
+
+  /* Ocultador del close hasta no precionar el navbar*/
+  .icons #close-icon {
+    display: none;
+  }
+
+  /* Mostrador del close al abrir el navbar*/
+  #check:checked ~ .icons #close-icon {
+    display: block;
+  }
+
+  /*Configuracion de altura y estilo del navbar en mobile*/
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: 0.3s ease;
+  }
+
+  /* Despliegue de conteiner del navbar*/
+  #check:checked ~ .navbar {
+    height: 17.7rem;
+  }
+
+  /*Alineacion de enlaces del navbar*/
+  .navbar a {
+    display: block;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: 0.3s ease;
+  }
+
+  /* Despliegue de enlances del navbar */
+  #check:checked ~ .navbar a {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: calc(0.15s * var(--i));
+  }
+}
+
+/*Termina NavBar*/
+
+/*Empieza Slider*/
+.conteiner h1 {
+  display: inline-block;
+  text-align: center;
+}
+
+.title-navbar {
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: traslate(-50%, -50%);
+  font-size: 3.6rem;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
